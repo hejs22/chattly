@@ -1,9 +1,15 @@
+import { ApolloProvider } from '@apollo/client';
 import { StyleSheet } from 'react-native';
 
 import Home from './src/navigation/Navigation';
+import ApiClient from './src/services/ApiClient';
 
 export default function App() {
-  return <Home />;
+  return (
+    <ApolloProvider client={ApiClient}>
+      <Home />
+    </ApolloProvider>
+  );
 }
 
 const styles = StyleSheet.create({
