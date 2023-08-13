@@ -21,7 +21,9 @@ const useUserRooms = () => {
     }
   `;
 
-  const { data, loading, error } = useQuery<{ usersRooms: UserRooms }>(GET_USERS_ROOMS);
+  const { data, loading, error } = useQuery<{ usersRooms: UserRooms }>(GET_USERS_ROOMS, {
+    pollInterval: 500,
+  });
 
   return { loading, error, data: data?.usersRooms.rooms };
 };

@@ -1,5 +1,5 @@
 import { RoomDetails } from './Chat';
-import { RouteProp } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 declare global {
   namespace ReactNavigation {
@@ -9,5 +9,7 @@ declare global {
 
 export type RootStackParamList = {
   Rooms: undefined;
-  Chat: RouteProp<{ params: { chatRoomDetails: RoomDetails } }, 'params'>;
+  Chat: { chatRoomDetails: RoomDetails };
 };
+
+export type ChatScreenProps = NativeStackScreenProps<RootStackParamList, 'Chat'>;

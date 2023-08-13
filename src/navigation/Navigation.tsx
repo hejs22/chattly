@@ -6,6 +6,7 @@ import RoomsListHeader from '../components/headers/RoomsListHeader';
 import ChatScreen from '../screens/ChatScreen';
 import RoomsScreen from '../screens/RoomsScreen';
 import { Screens } from '../shared/consts/ScreensConstants';
+import { extractOtherUserDataFromMessages } from '../shared/utils/chatUtils';
 import { navigationRef } from '../shared/utils/navigationUtils';
 import { RootStackParamList } from '../types/Navigation';
 
@@ -23,7 +24,14 @@ function AppScreens() {
         name={Screens.CHAT}
         component={ChatScreen}
         options={{
-          header: ({ route }) => <ChatRoomHeader user={route.params?.chatRoomDetails.user} />,
+          header: ({ route }) => (
+            <ChatRoomHeader
+              user={extractOtherUserDataFromMessages(
+                route.params?.chatRoomDetails.messages,
+                route.params?.chatRoomDetails.user
+              )}
+            />
+          ),
         }}
       />
     </Stack.Navigator>

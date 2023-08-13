@@ -15,6 +15,6 @@ export const containerStyles = StyleSheet.create({
   },
   screen: {
     backgroundColor: COLORS.blueLight,
-    minHeight: '100%',
+    flexGrow: 1,
   },
 });

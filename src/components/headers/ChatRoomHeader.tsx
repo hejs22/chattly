@@ -5,13 +5,14 @@ import PHONE_ICON from '../../assets/phone.svg';
 import VIDEO_CALL_ICON from '../../assets/videocall.svg';
 import IconButton from '../../primitives/IconButton';
 import { Screens } from '../../shared/consts/ScreensConstants';
+import { parseMaybeUserToString } from '../../shared/utils/chatUtils';
 import { navigate } from '../../shared/utils/navigationUtils';
 import commonStyles from '../../styles';
 import { User } from '../../types/User';
 import UserPicture from '../user/UserPicture';
 
 interface ChatRoomHeaderProps {
-  user: User;
+  user: User | null;
 }
 
 const ChatRoomHeader = ({ user }: ChatRoomHeaderProps) => {
@@ -26,9 +27,9 @@ const ChatRoomHeader = ({ user }: ChatRoomHeaderProps) => {
       </Pressable>
       <UserPicture size={44} />
       <View>
-        <Text
-          numberOfLines={1}
-          style={styles.username}>{`${user.firstName} ${user.lastName}`}</Text>
+        <Text numberOfLines={1} style={styles.username}>
+          {parseMaybeUserToString(user)}
+        </Text>
         <Text style={styles.lastActive}>Active now</Text>
       </View>
       <View style={styles.buttonsContainer}>

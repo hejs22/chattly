@@ -26,7 +26,7 @@ const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
   };
 
   const extractDataFromQueryResult = (roomDetails: RoomDetails) => {
-    const lastMessage = roomDetails.messages[0];
+    const lastMessage = roomDetails.messages[roomDetails.messages.length - 1];
     const lastMessageBody = lastMessage.body ?? 'Say "hi" to your new friend!';
     const lastMessageTime = lastMessage.insertedAt;
     const secondsSinceLastMessage = calculateHowMuchTimePassedSince(new Date(lastMessageTime));
