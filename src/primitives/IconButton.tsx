@@ -1,16 +1,17 @@
 import { ReactNode } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
 import commonStyles from '../styles';
 
 interface RoundButtonProps {
   children: ReactNode;
+  style?: StyleProp<ViewStyle>;
   onClick?: () => void;
 }
 
-const IconButton = ({ children, onClick }: RoundButtonProps) => {
+const IconButton = ({ children, onClick, style }: RoundButtonProps) => {
   return (
-    <Pressable style={styles.button} onTouchEnd={onClick}>
+    <Pressable style={[styles.button, style]} onTouchEnd={onClick}>
       {children}
     </Pressable>
   );
@@ -18,7 +19,6 @@ const IconButton = ({ children, onClick }: RoundButtonProps) => {
 
 const styles = StyleSheet.create({
   button: {
-    padding: 5,
     borderRadius: 100,
     backgroundColor: commonStyles.colors.white,
   },

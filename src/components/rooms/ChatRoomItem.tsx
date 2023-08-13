@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     padding: 12,
-    borderRadius: 12,
+    borderRadius: commonStyles.sizes.radiusM,
     backgroundColor: commonStyles.colors.white,
     flexDirection: 'row',
     gap: 15,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyles.colors.green,
     height: 12,
     width: 12,
-    borderRadius: 12,
+    borderRadius: commonStyles.sizes.radiusM,
   },
   error: {
     color: commonStyles.colors.red,

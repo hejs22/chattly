@@ -5,6 +5,7 @@ import { GiftedChat, IMessage } from 'react-native-gifted-chat';
 import ChatInputToolbar from './ChatInputToolbar';
 import MessageBubble from './MessageBubble';
 import SendMessageButton from './SendMessageButton';
+import commonStyles from '../../styles';
 
 interface ChatProps {
   messages: IMessage[];
@@ -24,7 +25,7 @@ const Chat = ({ messages }: ChatProps) => {
         onSend={(messages) => onSend(messages)}
         renderBubble={(props) => <MessageBubble {...props} />}
         renderInputToolbar={(props) => <ChatInputToolbar {...props} />}
-        renderSend={(props) => <SendMessageButton size={50} {...props} />}
+        renderSend={(props) => <SendMessageButton size={commonStyles.sizes.iconSize} {...props} />}
         renderAvatar={null}
         scrollToBottom
         placeholder=""

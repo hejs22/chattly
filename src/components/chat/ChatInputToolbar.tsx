@@ -13,10 +13,12 @@ const styles = StyleSheet.create({
     backgroundColor: commonStyles.colors.blue,
     paddingBottom: 40,
     justifyContent: 'center',
+    borderTopRightRadius: commonStyles.sizes.radiusM,
+    borderTopLeftRadius: commonStyles.sizes.radiusM,
   },
   input: {
     backgroundColor: commonStyles.colors.white,
-    borderRadius: 10,
+    borderRadius: commonStyles.sizes.radiusM,
     borderBottomRightRadius: 0,
     marginRight: 50,
   },

@@ -11,10 +11,10 @@ const RoomsListHeader = () => {
       <Text style={styles.header}>Rooms</Text>
       <View style={styles.buttonsContainer}>
         <IconButton>
-          <SEARCH_ICON width={34} height={34} />
+          <SEARCH_ICON />
         </IconButton>
         <IconButton>
-          <ROOMS_ICON width={34} height={34} />
+          <ROOMS_ICON />
         </IconButton>
       </View>
     </View>

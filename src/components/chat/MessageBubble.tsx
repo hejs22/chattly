@@ -32,7 +32,7 @@ const MessageBubble = ({ ...props }: Readonly<BubbleProps<IMessage>>) => {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    borderRadius: 15,
+    borderRadius: commonStyles.sizes.radiusM,
   },
   left: {
     backgroundColor: commonStyles.colors.white,

@@ -25,7 +25,7 @@ const ChatRoomHeader = ({ user }: ChatRoomHeaderProps) => {
       <Pressable onTouchEnd={navigateToRoomsList} style={styles.backButton}>
         <CARET_ICON width={10} height={20} fill="#5603AD" />
       </Pressable>
-      <UserPicture size={44} />
+      <UserPicture size={commonStyles.sizes.iconSize} />
       <View>
         <Text numberOfLines={1} style={styles.username}>
           {parseMaybeUserToString(user)}
@@ -34,10 +34,10 @@ const ChatRoomHeader = ({ user }: ChatRoomHeaderProps) => {
       </View>
       <View style={styles.buttonsContainer}>
         <IconButton>
-          <PHONE_ICON width={34} height={34} />
+          <PHONE_ICON />
         </IconButton>
         <IconButton>
-          <VIDEO_CALL_ICON width={34} height={34} />
+          <VIDEO_CALL_ICON />
         </IconButton>
       </View>
     </View>
