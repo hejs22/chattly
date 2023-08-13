@@ -2,7 +2,9 @@ import { useCallback, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
 
+import ChatInputToolbar from './ChatInputToolbar';
 import MessageBubble from './MessageBubble';
+import SendMessageButton from './SendMessageButton';
 
 interface ChatProps {
   messages: IMessage[];
@@ -20,9 +22,13 @@ const Chat = ({ messages }: ChatProps) => {
       <GiftedChat
         messages={chatMessages}
         onSend={(messages) => onSend(messages)}
-        renderBubble={(props) => <MessageBubble message={props} />}
+        renderBubble={(props) => <MessageBubble {...props} />}
+        renderInputToolbar={(props) => <ChatInputToolbar {...props} />}
+        renderSend={(props) => <SendMessageButton size={50} {...props} />}
         renderAvatar={null}
         scrollToBottom
+        placeholder=""
+        minInputToolbarHeight={100}
       />
     </View>
   );

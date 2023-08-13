@@ -3,12 +3,8 @@ import { BubbleProps, IMessage, MessageText } from 'react-native-gifted-chat';
 
 import commonStyles from '../../styles';
 
-interface MessageBubbleProps {
-  message: Readonly<BubbleProps<IMessage>>;
-}
-
-const MessageBubble = ({ message }: MessageBubbleProps) => {
-  const isLastMessage = message.nextMessage && !message.nextMessage._id;
+const MessageBubble = ({ ...props }: Readonly<BubbleProps<IMessage>>) => {
+  const isLastMessage = props.nextMessage && !props.nextMessage._id;
 
   const additionalMargin = {
     marginBottom: !isLastMessage ? 10 : 20,
@@ -16,7 +12,7 @@ const MessageBubble = ({ message }: MessageBubbleProps) => {
 
   return (
     <MessageText
-      {...message}
+      {...props}
       containerStyle={{
         left: {
           ...styles.container,
