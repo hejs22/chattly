@@ -1,19 +1,30 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import ChatRoomHeader from '../components/headers/ChatRoomHeader';
 import RoomsListHeader from '../components/headers/RoomsListHeader';
-import RoomsScreen from '../screens/rooms/RoomsScreen';
+import ChatScreen from '../screens/ChatScreen';
+import RoomsScreen from '../screens/RoomsScreen';
 import { Screens } from '../shared/consts/ScreensConstants';
+import { navigationRef } from '../shared/utils/navigationUtils';
+import { RootStackParamList } from '../types/Navigation';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AppScreens() {
   return (
-    <Stack.Navigator initialRouteName={Screens.ROOM}>
+    <Stack.Navigator initialRouteName={Screens.ROOMS}>
       <Stack.Screen
-        name={Screens.ROOM}
+        name={Screens.ROOMS}
         component={RoomsScreen}
         options={{ header: () => <RoomsListHeader /> }}
+      />
+      <Stack.Screen
+        name={Screens.CHAT}
+        component={ChatScreen}
+        options={{
+          header: ({ route }) => <ChatRoomHeader user={route.params?.chatRoomDetails.user} />,
+        }}
       />
     </Stack.Navigator>
   );
@@ -21,7 +32,7 @@ function AppScreens() {
 
 export default function Home() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <AppScreens />
     </NavigationContainer>
   );

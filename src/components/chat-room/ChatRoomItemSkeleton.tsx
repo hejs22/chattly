@@ -1,6 +1,6 @@
 import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
 
-const Skeleton = () => {
+const ChatRoomItemSkeleton = () => {
   return (
     <ContentLoader
       speed={2}
@@ -16,4 +16,4 @@ const Skeleton = () => {
   );
 };
 
-export default Skeleton;
+export default ChatRoomItemSkeleton;

@@ -1,4 +1,4 @@
 export namespace Screens {
-  export const ROOMS = 'rooms';
-  export const ROOM = `${ROOMS}/:id`;
+  export const ROOMS = 'Rooms';
+  export const CHAT = 'Chat';
 }

@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 
+import commonStyles from '../styles';
+
 interface RoundButtonProps {
   children: ReactNode;
   onClick?: () => void;
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
   button: {
     padding: 5,
     borderRadius: 100,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: commonStyles.colors.white,
   },
 });
 

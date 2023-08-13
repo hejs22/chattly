@@ -1,11 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-import Skeleton from '../../primitives/Skeleton';
+import ChatRoomItemSkeleton from './ChatRoomItemSkeleton';
+import { Screens } from '../../shared/consts/ScreensConstants';
 import useRoomDetails from '../../shared/hooks/useRoomDetails';
+import { navigate } from '../../shared/utils/navigationUtils';
 import {
   calculateHowMuchTimePassedSince,
   parseTimeInSecondsToStringExpression,
 } from '../../shared/utils/timeUtils';
+import commonStyles from '../../styles';
 import { Room, RoomDetails } from '../../types/Chat';
 import UserPicture from '../user/UserPicture';
 
@@ -18,19 +21,9 @@ const IS_NEW_TIME_THRESHOLD_IN_SECONDS = 60;
 const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
   const { data, loading, error } = useRoomDetails(room.id);
 
-  if (loading) {
-    return <Skeleton />;
-  }
-
-  if (!data || error) {
-    return (
-      <View style={styles.container}>
-        <Text numberOfLines={1} style={[styles.error]}>
-          Failed to load chat room "{room.name}"
-        </Text>
-      </View>
-    );
-  }
+  const navigateToChatRoom = (roomDetails: RoomDetails) => {
+    navigate(Screens.CHAT, { chatRoomDetails: roomDetails });
+  };
 
   const extractDataFromQueryResult = (roomDetails: RoomDetails) => {
     const lastMessage = roomDetails.messages[0];
@@ -42,11 +35,25 @@ const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
     return { lastMessage, isNew, lastMessageBody, secondsSinceLastMessage };
   };
 
+  if (loading) {
+    return <ChatRoomItemSkeleton />;
+  } else if (!data || error) {
+    return (
+      <View style={styles.container}>
+        <Text numberOfLines={1} style={[styles.error]}>
+          Failed to load chat room "{room.name}"
+        </Text>
+      </View>
+    );
+  }
+
   const { lastMessage, isNew, lastMessageBody, secondsSinceLastMessage } =
     extractDataFromQueryResult(data);
 
   return (
-    <View style={[styles.container, isNew && styles.highlighted]}>
+    <View
+      style={[styles.container, isNew && styles.highlighted]}
+      onTouchEnd={() => navigateToChatRoom(data)}>
       <UserPicture size={64} />
 
       <View style={styles.content}>
@@ -81,16 +88,16 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 12,
     borderRadius: 12,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: commonStyles.colors.white,
     flexDirection: 'row',
     gap: 15,
     fontFamily: 'Regular',
   },
   highlighted: {
-    backgroundColor: '#5603AD',
+    backgroundColor: commonStyles.colors.purpleDark,
   },
   highlightedText: {
-    color: '#FFFFFF',
+    color: commonStyles.colors.white,
   },
   content: {
     flexGrow: 1,
@@ -98,7 +105,7 @@ const styles = StyleSheet.create({
   text: {
     overflow: 'hidden',
     maxWidth: '80%',
-    color: '#1F1F1F',
+    color: commonStyles.colors.black,
   },
   title: {
     fontSize: 15,
@@ -110,17 +117,17 @@ const styles = StyleSheet.create({
   },
   lastMessageTime: {
     fontSize: 13,
-    color: '#9FA2B2',
+    color: commonStyles.colors.gray,
     alignSelf: 'flex-end',
   },
   isActiveDot: {
-    backgroundColor: '#A8FF76',
+    backgroundColor: commonStyles.colors.green,
     height: 12,
     width: 12,
     borderRadius: 12,
   },
   error: {
-    color: '#C60048',
+    color: commonStyles.colors.red,
     fontSize: 15,
   },
 });

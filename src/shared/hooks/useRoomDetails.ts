@@ -21,7 +21,11 @@ const useRoomDetails = (id: string) => {
         }
         name
         user {
-          id
+           email
+            firstName
+            id
+            lastName
+            role
         }
       }
     }
