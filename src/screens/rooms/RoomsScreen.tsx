@@ -1,13 +1,30 @@
-import { View, Text } from 'react-native';
-import useRooms from '../../shared/hooks/useRooms';
+import { View, Text, ActivityIndicator } from 'react-native';
+
+import ChatRoomsList from '../../components/chat-room/ChatRoomsList';
+import useUserRooms from '../../shared/hooks/useUserRooms';
 
 const RoomsScreen = () => {
-  const { error, loading, data } = useRooms();
-  console.log(data);
+  const { data, loading, error } = useUserRooms();
+
+  if (loading) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  if (!data || error) {
+    return (
+      <View>
+        <Text>No chat rooms found.</Text>
+      </View>
+    );
+  }
 
   return (
     <View>
-      <Text>Rooms</Text>
+      <ChatRoomsList rooms={data} />
     </View>
   );
 };

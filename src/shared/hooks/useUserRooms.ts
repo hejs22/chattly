@@ -1,6 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 
-const useRooms = () => {
+import { UserRooms } from '../../types/Chat';
+
+const useUserRooms = () => {
   const GET_USERS_ROOMS = gql`
     {
       usersRooms {
@@ -19,7 +21,9 @@ const useRooms = () => {
     }
   `;
 
-  return useQuery(GET_USERS_ROOMS);
+  const { data, loading, error } = useQuery<{ usersRooms: UserRooms }>(GET_USERS_ROOMS);
+
+  return { loading, error, data: data?.usersRooms.rooms };
 };
 
-export default useRooms;
+export default useUserRooms;
