@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import RoomsListHeader from '../components/headers/RoomsListHeader';
 import RoomsScreen from '../screens/rooms/RoomsScreen';
 import { Screens } from '../shared/consts/ScreensConstants';
 
@@ -9,7 +10,11 @@ const Stack = createNativeStackNavigator();
 function AppScreens() {
   return (
     <Stack.Navigator initialRouteName={Screens.ROOM}>
-      <Stack.Screen name={Screens.ROOM} component={RoomsScreen} />
+      <Stack.Screen
+        name={Screens.ROOM}
+        component={RoomsScreen}
+        options={{ header: () => <RoomsListHeader /> }}
+      />
     </Stack.Navigator>
   );
 }

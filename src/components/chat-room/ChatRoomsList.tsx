@@ -19,7 +19,9 @@ const ChatRoomsList = ({ rooms }: ChatRoomsListProps) => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 30,
     gap: 10,
+    minHeight: '100%',
   },
 });
 
