@@ -3,8 +3,8 @@ import { IMessage } from 'react-native-gifted-chat';
 import { Message } from '../../types/Chat';
 import { User } from '../../types/User';
 
-export const mapMessagesToCorrectFormat = (messages: Message[]): IMessage[] => {
-  return messages.map((message) => {
+class MessagesMapper {
+  oneToGiftedChatFormat = (message: Message): IMessage => {
     return {
       _id: message.id,
       text: message.body,
@@ -14,8 +14,16 @@ export const mapMessagesToCorrectFormat = (messages: Message[]): IMessage[] => {
         name: message.user.lastName.concat(' ', message.user.lastName),
       },
     };
-  });
-};
+  };
+
+  manyToGiftedChatFormat = (messages: Message[]): IMessage[] => {
+    return messages.map((message) => {
+      return this.oneToGiftedChatFormat(message);
+    });
+  };
+}
+
+export const GiftedMessageMapper = new MessagesMapper();
 
 export const extractOtherUserDataFromMessages = (messages: Message[], you: User): User | null => {
   const filteredMessages = messages.filter((message) => message.user.id !== you.id);

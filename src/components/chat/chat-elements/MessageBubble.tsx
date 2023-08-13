@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { BubbleProps, IMessage, MessageText } from 'react-native-gifted-chat';
 
-import commonStyles from '../../styles';
+import commonStyles from '../../../styles';
 
 const MessageBubble = ({ ...props }: Readonly<BubbleProps<IMessage>>) => {
   const isLastMessage = props.nextMessage && !props.nextMessage._id;

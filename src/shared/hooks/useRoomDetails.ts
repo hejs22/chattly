@@ -31,9 +31,9 @@ const useRoomDetails = (id: string) => {
     }
   `;
 
-  const { data, loading, error } = useQuery<{ room: RoomDetails }>(GET_ROOM_DETAILS, {
-    pollInterval: 500,
-  });
+  const { data, loading, error, startPolling } = useQuery<{ room: RoomDetails }>(GET_ROOM_DETAILS);
+
+  startPolling(250);
   return { loading, error, data: data?.room };
 };
 

@@ -21,10 +21,10 @@ const useUserRooms = () => {
     }
   `;
 
-  const { data, loading, error } = useQuery<{ usersRooms: UserRooms }>(GET_USERS_ROOMS, {
-    pollInterval: 500,
-  });
-
+  const { data, loading, error, startPolling } = useQuery<{ usersRooms: UserRooms }>(
+    GET_USERS_ROOMS
+  );
+  startPolling(1000);
   return { loading, error, data: data?.usersRooms.rooms };
 };
 
