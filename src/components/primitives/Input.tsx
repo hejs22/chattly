@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   input: {
-    borderRadius: commonStyles.sizes.radiusM,
+    borderRadius: commonStyles.sizes.radiusS,
     backgroundColor: commonStyles.colors.white,
     padding: 15,
     fontSize: 15,
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   label: {
     color: commonStyles.colors.white,
     fontFamily: 'Regular',
+    fontSize: 15,
   },
 });
 

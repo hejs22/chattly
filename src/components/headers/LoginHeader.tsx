@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   subheader: {
     marginTop: 30,
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'Bold',
     color: commonStyles.colors.white,
   },

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   text: {
     color: commonStyles.colors.white,
     padding: 12,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'SemiBold',
   },
 });

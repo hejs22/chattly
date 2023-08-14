@@ -44,10 +44,11 @@ const styles = StyleSheet.create({
   signUpText: {
     color: commonStyles.colors.white,
     padding: 5,
+    fontSize: 14,
   },
   signUpLink: {
     color: commonStyles.colors.purpleDark,
-    fontFamily: 'Bold',
+    fontFamily: 'SemiBold',
   },
 });
 
