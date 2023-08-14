@@ -1,6 +1,6 @@
 import { Pressable, PressableProps, StyleSheet, Text } from 'react-native';
 
-import commonStyles from '../styles';
+import commonStyles from '../../styles';
 
 interface ButtonProps extends Omit<PressableProps, 'children'> {
   children: string;

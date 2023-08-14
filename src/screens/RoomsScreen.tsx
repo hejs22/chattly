@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import ChatRoomItemSkeleton from '../components/rooms/ChatRoomItemSkeleton';
 import ChatRoomsList from '../components/rooms/ChatRoomsList';
-import useUserRooms from '../shared/hooks/useUserRooms';
+import useUserRooms from '../shared/hooks/rooms/useUserRooms';
 import commonStyles from '../styles';
 
 const RoomsScreen = () => {

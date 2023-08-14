@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import ChatRoomItemSkeleton from './ChatRoomItemSkeleton';
 import { Screens } from '../../shared/consts/ScreensConstants';
-import useRoomDetails from '../../shared/hooks/useRoomDetails';
+import useRoomDetails from '../../shared/hooks/rooms/useRoomDetails';
 import { navigate } from '../../shared/utils/navigationUtils';
 import {
   calculateHowMuchTimePassedSince,

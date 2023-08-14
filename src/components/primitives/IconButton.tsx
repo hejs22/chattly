@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
-import commonStyles from '../styles';
+import commonStyles from '../../styles';
 
 interface RoundButtonProps {
   children: ReactNode;

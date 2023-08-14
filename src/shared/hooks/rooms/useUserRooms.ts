@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-import { UserRooms } from '../../types/Chat';
+import { UserRooms } from '../../../types/Chat';
 
 const useUserRooms = () => {
   const GET_USERS_ROOMS = gql`

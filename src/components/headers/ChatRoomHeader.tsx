@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import CARET_ICON from '../../assets/caret.svg';
 import PHONE_ICON from '../../assets/phone.svg';
 import VIDEO_CALL_ICON from '../../assets/videocall.svg';
-import IconButton from '../../primitives/IconButton';
+import IconButton from '../primitives/IconButton';
 import { Screens } from '../../shared/consts/ScreensConstants';
 import { parseMaybeUserToString } from '../../shared/utils/chatUtils';
 import { navigate } from '../../shared/utils/navigationUtils';

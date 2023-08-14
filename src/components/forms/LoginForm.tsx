@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
-import Button from '../../primitives/Button';
-import Input from '../../primitives/Input';
 import commonStyles from '../../styles';
+import Button from '../primitives/Button';
+import Input from '../primitives/Input';
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;

@@ -1,6 +1,6 @@
 import { gql, useSubscription } from '@apollo/client';
 
-import { User } from '../../types/User';
+import { User } from '../../../types/User';
 
 export const useTypingUser = (roomId: string) => {
   const TYPING_USER = gql`

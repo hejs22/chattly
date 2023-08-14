@@ -5,7 +5,7 @@ import ChatInputToolbar from './chat-elements/ChatInputToolbar';
 import MessageBubble from './chat-elements/MessageBubble';
 import SendMessageButton from './chat-elements/SendMessageButton';
 import UserTypingIndicator from './chat-elements/UserTypingIndicator';
-import { useSendMessage } from '../../shared/hooks/useSendMessage';
+import { useSendMessage } from '../../shared/hooks/chat/useSendMessage';
 import commonStyles from '../../styles';
 import { User } from '../../types/User';
 

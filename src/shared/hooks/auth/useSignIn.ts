@@ -1,8 +1,10 @@
 import { gql, useMutation } from '@apollo/client';
 
-import { updateAuthorizationToken } from '../../services/AuthService';
+import { useAuth } from './useAuth';
+import { updateAuthorizationToken } from '../../../services/AuthService';
 
 export const useSignIn = () => {
+  const { setIsSignedIn } = useAuth();
   const SIGN_IN = gql`
     mutation LoginUser($email: String!, $password: String!) {
       loginUser(email: $email, password: $password) {
@@ -20,6 +22,7 @@ export const useSignIn = () => {
       variables: { email, password },
       onCompleted: (res) => {
         updateAuthorizationToken(res.loginUser.token);
+        setIsSignedIn(true);
       },
     });
   };

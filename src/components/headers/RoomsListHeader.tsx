@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import ROOMS_ICON from '../../assets/rooms.svg';
 import SEARCH_ICON from '../../assets/search.svg';
-import IconButton from '../../primitives/IconButton';
+import IconButton from '../primitives/IconButton';
 import commonStyles from '../../styles';
 
 const RoomsListHeader = () => {

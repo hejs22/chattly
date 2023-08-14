@@ -6,13 +6,18 @@ import {
   Poppins_700Bold,
   Poppins_600SemiBold,
 } from '@expo-google-fonts/poppins';
+import { useContext, useState } from 'react';
+import { set } from 'react-hook-form';
 import { StyleSheet, View } from 'react-native';
 
 import Home from './src/navigation/Navigation';
 import ApiClient from './src/services/ApiClient';
+import { AuthContext } from './src/shared/contexts/AuthContext';
 import commonStyles from './src/styles';
 
 export default function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
   const [fontsLoaded, fontError] = useFonts({
     Regular: Poppins_400Regular,
     Medium: Poppins_500Medium,
@@ -24,11 +29,17 @@ export default function App() {
     return null;
   }
 
+  const updateAuthContext = (isSignedIn: boolean) => {
+    setIsSignedIn(isSignedIn);
+  };
+
   return (
     <ApolloProvider client={ApiClient}>
-      <View style={styles.container}>
-        <Home />
-      </View>
+      <AuthContext.Provider value={{ isSignedIn, setIsSignedIn: updateAuthContext }}>
+        <View style={styles.container}>
+          <Home />
+        </View>
+      </AuthContext.Provider>
     </ApolloProvider>
   );
 }

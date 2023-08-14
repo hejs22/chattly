@@ -1,7 +1,7 @@
 import { Control, useController } from 'react-hook-form';
 import { StyleSheet, TextInput, TextInputProps, View, Text } from 'react-native';
 
-import commonStyles from '../styles';
+import commonStyles from '../../styles';
 
 interface InputProps extends TextInputProps {
   name: string;

@@ -2,9 +2,7 @@ import { useCallback } from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 
 import LoginForm from '../components/forms/LoginForm';
-import { Screens } from '../shared/consts/ScreensConstants';
-import { useSignIn } from '../shared/hooks/useSignIn';
-import { navigate } from '../shared/utils/navigationUtils';
+import { useSignIn } from '../shared/hooks/auth/useSignIn';
 import commonStyles from '../styles';
 
 const LoginScreen = () => {
@@ -13,8 +11,8 @@ const LoginScreen = () => {
   const onSubmit = useCallback(async (email: string, password: string) => {
     try {
       await mutate('phil.dunphy@mail.com', '1wgUiDMaAF_J__D'); // TODO remember to delete it
-      navigate(Screens.ROOMS, {});
     } catch (e) {
+      console.log(e);
       // already handled by custom hook
     }
   }, []);

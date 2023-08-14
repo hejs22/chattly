@@ -1,6 +1,6 @@
 import { gql, useMutation } from '@apollo/client';
 
-import { User } from '../../types/User';
+import { User } from '../../../types/User';
 
 export const useSetTypingUser = (roomId: string) => {
   const SET_TYPING_USER = gql`
