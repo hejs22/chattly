@@ -18,7 +18,6 @@ class ApiClientBuilder {
   }
 
   addHttpLink(uri: string) {
-    console.log(uri);
     this.httpLink = createHttpLink({
       uri,
     });
