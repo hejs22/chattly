@@ -5,6 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 import { getMainDefinition } from '@apollo/client/utilities';
 
 import { getAuthorizationToken } from './AuthService';
+import config from '../AppConfig';
 import AsyncParamsPhoenixSocket from '../shared/utils/socket';
 
 class ApiClientBuilder {
@@ -17,6 +18,7 @@ class ApiClientBuilder {
   }
 
   addHttpLink(uri: string) {
+    console.log(uri);
     this.httpLink = createHttpLink({
       uri,
     });
@@ -79,8 +81,8 @@ class ApiClientBuilder {
 }
 
 const ApiClient = ApiClientBuilder.create()
-  .addHttpLink('https://chat.thewidlarzgroup.com/api/graphql')
-  .addWS('wss://chat.thewidlarzgroup.com/socket')
+  .addHttpLink(config.apiHttpURL)
+  .addWS(config.apiWsURL)
   .build();
 
 export default ApiClient;

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "strict": true,
+    "typeRoots": ["src/types"]
   },
   "include": ["**/*.ts", "**/*.tsx", "types/**/*.ts", "src"]
 }
