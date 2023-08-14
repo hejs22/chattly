@@ -10,6 +10,8 @@ declare global {
 export type RootStackParamList = {
   Rooms: undefined;
   Chat: { chatRoomDetails: RoomDetails };
+  Login: undefined;
+  Register: undefined;
 };
 
 export type ChatScreenProps = NativeStackScreenProps<RootStackParamList, 'Chat'>;

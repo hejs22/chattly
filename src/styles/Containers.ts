@@ -5,8 +5,6 @@ import { COLORS } from './Colors';
 export const containerStyles = StyleSheet.create({
   screenHeader: {
     padding: 15,
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
     backgroundColor: COLORS.blue,
     flexDirection: 'row',
     alignItems: 'center',

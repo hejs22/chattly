@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
   },
   error: {
     fontFamily: 'Medium',
+    width: '100%',
+    textAlign: 'center',
+    color: commonStyles.colors.red,
+    padding: 20,
     fontSize: 15,
   },
 });

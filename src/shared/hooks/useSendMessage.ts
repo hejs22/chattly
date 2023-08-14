@@ -18,6 +18,11 @@ export const useSendMessage = () => {
     }
   `;
 
-  const [send, { data, loading, error }] = useMutation(SEND_MESSAGE);
-  return { mutate: send, data, loading, error };
+  const [mutate, { data, loading, error }] = useMutation(SEND_MESSAGE);
+
+  const sendMessage = async (body: string, roomId: string) => {
+    await mutate({ variables: { body, roomId } });
+  };
+
+  return { mutate: sendMessage, data, loading, error };
 };

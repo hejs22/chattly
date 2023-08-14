@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
 
@@ -24,7 +23,7 @@ const Chat = ({ messages, roomId, myId, typingUser, onTypingStart }: ChatProps) 
   const onSend = async (messages: IMessage[] = []) => {
     const body = messages[0].text;
     try {
-      await mutate({ variables: { body, roomId } });
+      await mutate(body, roomId);
     } catch (e) {
       // TODO better error handling
     }

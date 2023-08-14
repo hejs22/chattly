@@ -47,6 +47,8 @@ const ChatRoomHeader = ({ user }: ChatRoomHeaderProps) => {
 const styles = StyleSheet.create({
   container: {
     ...commonStyles.containers.screenHeader,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
     gap: 10,
   },
   username: {

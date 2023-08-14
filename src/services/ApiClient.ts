@@ -11,8 +11,8 @@ const httpLink = createHttpLink({
   uri: 'https://chat.thewidlarzgroup.com/api/graphql',
 });
 
-const authLink = setContext((_, { headers }) => {
-  const token = getAuthorizationToken();
+const authLink = setContext(async (_, { headers }) => {
+  const token = await getAuthorizationToken();
   const authorization = token ? `Bearer ${token}` : '';
   return {
     headers: {
@@ -24,7 +24,7 @@ const authLink = setContext((_, { headers }) => {
 
 const phoenixSocket = new AsyncParamsPhoenixSocket('wss://chat.thewidlarzgroup.com/socket', {
   params: async () => {
-    const token = getAuthorizationToken();
+    const token = await getAuthorizationToken();
     if (!token) return {};
     return {
       token,

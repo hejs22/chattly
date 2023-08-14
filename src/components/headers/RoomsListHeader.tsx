@@ -24,6 +24,8 @@ const RoomsListHeader = () => {
 const styles = StyleSheet.create({
   container: {
     ...commonStyles.containers.screenHeader,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
   },
   header: {
     ...commonStyles.text.screenHeaderText,

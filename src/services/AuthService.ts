@@ -1,4 +1,16 @@
-export const getAuthorizationToken = () => {
-  // TODO remove this mock
-  return 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjaGF0bHkiLCJleHAiOjE2OTQwNDI2NTgsImlhdCI6MTY5MTYyMzQ1OCwiaXNzIjoiY2hhdGx5IiwianRpIjoiMDBmZDI1YTUtNWI4Zi00NWJjLWIzY2EtZjAzYWM3N2M4MWQ3IiwibmJmIjoxNjkxNjIzNDU3LCJzdWIiOiIzNzBiYzNjMC02YTFhLTQ5NGUtOTM0ZS0zZTViYTViNzhkZGEiLCJ0eXAiOiJhY2Nlc3MifQ.Z4a1iD2gnV5x7kuGgz81d1BIAGoJd82MdP3M-kfMHK9ERPvEFW2fKsf4XaEGryFDxz6s4YSXF9V1n4R8jv9Y8A';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const AUTH_TOKEN_KEY = 'AUTH_TOKEN_KEY';
+
+export const getAuthorizationToken = async () => {
+  return await AsyncStorage.getItem(AUTH_TOKEN_KEY);
+};
+
+export const updateAuthorizationToken = async (token: string) => {
+  await AsyncStorage.setItem(AUTH_TOKEN_KEY, token);
+};
+
+export const isSignedIn = async () => {
+  const token = await getAuthorizationToken();
+  return !!token;
 };

@@ -15,8 +15,9 @@ export const useSetTypingUser = (roomId: string) => {
     }
   `;
 
-  const [send, { data, loading, error }] = useMutation<{ typingUser: User }>(SET_TYPING_USER, {
+  const [mutate, { data, loading, error }] = useMutation<{ typingUser: User }>(SET_TYPING_USER, {
     variables: { roomId },
   });
-  return { mutate: send, data: data?.typingUser, loading, error };
+
+  return { mutate, data: data?.typingUser, loading, error };
 };
