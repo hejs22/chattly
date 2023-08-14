@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { IMessage, InputToolbar, InputToolbarProps } from 'react-native-gifted-chat';
 
 import commonStyles from '../../../styles';
+import { memo } from 'react';
 
 const ChatInputToolbar = ({ ...props }: InputToolbarProps<IMessage>) => {
   return <InputToolbar {...props} containerStyle={styles.container} primaryStyle={styles.input} />;
@@ -24,4 +25,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatInputToolbar;
+export default memo(ChatInputToolbar);

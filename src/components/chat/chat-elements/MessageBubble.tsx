@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 import { BubbleProps, IMessage, MessageText } from 'react-native-gifted-chat';
 
 import commonStyles from '../../../styles';
+import { memo } from 'react';
 
 const MessageBubble = ({ ...props }: Readonly<BubbleProps<IMessage>>) => {
   const isLastMessage = props.nextMessage && !props.nextMessage._id;
@@ -48,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MessageBubble;
+export default memo(MessageBubble);

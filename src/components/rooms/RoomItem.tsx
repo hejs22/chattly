@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import RoomItemSkeleton from './RoomItemSkeleton';
@@ -131,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RoomItem;
+export default memo(RoomItem);

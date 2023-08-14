@@ -1,9 +1,9 @@
 import { View, StyleSheet } from 'react-native';
 
 import Chat from '../components/chat/Chat';
-import useRoomDetails from '../shared/hooks/rooms/useRoomDetails';
 import { useSetTypingUser } from '../shared/hooks/chat/useSetTypingUser';
 import { useTypingUser } from '../shared/hooks/chat/useTypingUser';
+import useRoomDetails from '../shared/hooks/rooms/useRoomDetails';
 import { GiftedMessageMapper } from '../shared/utils/chatUtils';
 import commonStyles from '../styles';
 import { ChatScreenProps } from '../types/Navigation';

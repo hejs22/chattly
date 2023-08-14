@@ -1,6 +1,7 @@
 import { IMessage, Send, SendProps } from 'react-native-gifted-chat';
 
 import SEND_ICON from '../../../assets/send.svg';
+import { memo } from 'react';
 interface SendMessageButtonProps extends SendProps<IMessage> {
   size: number;
 }
@@ -16,4 +17,4 @@ const SendMessageButton = ({ size, ...props }: SendMessageButtonProps) => {
   );
 };
 
-export default SendMessageButton;
+export default memo(SendMessageButton);

@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useContext } from 'react';
 
 import ChatRoomHeader from '../components/headers/ChatRoomHeader';
 import LoginHeader from '../components/headers/LoginHeader';
@@ -9,7 +8,6 @@ import ChatScreen from '../screens/ChatScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RoomsScreen from '../screens/RoomsScreen';
 import { Screens } from '../shared/consts/ScreensConstants';
-import { AuthContext } from '../shared/contexts/AuthContext';
 import { useAuth } from '../shared/hooks/auth/useAuth';
 import { extractOtherUserDataFromMessages } from '../shared/utils/chatUtils';
 import { navigationRef } from '../shared/utils/navigationUtils';

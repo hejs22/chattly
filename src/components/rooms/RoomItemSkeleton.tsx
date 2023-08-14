@@ -1,4 +1,5 @@
 import ContentLoader, { Circle, Rect } from 'react-content-loader/native';
+import { memo } from 'react';
 
 const RoomItemSkeleton = () => {
   return (
@@ -16,4 +17,4 @@ const RoomItemSkeleton = () => {
   );
 };
 
-export default RoomItemSkeleton;
+export default memo(RoomItemSkeleton);

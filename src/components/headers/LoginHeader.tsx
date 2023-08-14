@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 
 import commonStyles from '../../styles';
+import { memo } from 'react';
 
 const LoginHeader = () => {
   return (
@@ -30,4 +31,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginHeader;
+export default memo(LoginHeader);

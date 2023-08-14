@@ -10,6 +10,7 @@ import { navigate } from '../../shared/utils/navigationUtils';
 import commonStyles from '../../styles';
 import { User } from '../../types/User';
 import UserPicture from '../user/UserPicture';
+import { memo } from 'react';
 
 interface ChatRoomHeaderProps {
   user: User | null;
@@ -73,4 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatRoomHeader;
+export default memo(ChatRoomHeader);

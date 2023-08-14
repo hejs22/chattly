@@ -1,9 +1,9 @@
+import { memo } from 'react';
 import ContentLoader, { Circle } from 'react-content-loader/native';
 import { StyleSheet, View } from 'react-native';
 
 import commonStyles from '../../../styles';
 import UserPicture from '../../user/UserPicture';
-import { memo } from 'react';
 
 const UserTypingIndicator = () => {
   return (

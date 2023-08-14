@@ -4,6 +4,7 @@ import ROOMS_ICON from '../../assets/rooms.svg';
 import SEARCH_ICON from '../../assets/search.svg';
 import IconButton from '../primitives/IconButton';
 import commonStyles from '../../styles';
+import { memo } from 'react';
 
 const RoomsListHeader = () => {
   return (
@@ -38,4 +39,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RoomsListHeader;
+export default memo(RoomsListHeader);

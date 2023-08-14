@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
 
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Chat;
+export default memo(Chat);

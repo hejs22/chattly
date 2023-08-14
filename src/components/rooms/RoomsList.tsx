@@ -2,6 +2,7 @@ import { StyleSheet, View } from 'react-native';
 
 import RoomItem from './RoomItem';
 import { Room } from '../../types/Chat';
+import { memo } from 'react';
 
 interface ChatRoomsListProps {
   rooms: Room[];
@@ -25,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RoomsList;
+export default memo(RoomsList);
