@@ -22,9 +22,11 @@ Simple ReactNative chat application with websockets and GraphQL.
 - Error handling ✅
 
 ## Gallery
-![1.jpg](media/1.jpg)
 ![2.jpg](media/2.jpg)
+
 ![3.jpg](media/3.jpg)
+
+![1.jpg](media/1.jpg)
 
 ## Config
 Backend url can be changed by setting `REACT_APP_WS_URL` and `REACT_APP_HTTP_URL` envs.
