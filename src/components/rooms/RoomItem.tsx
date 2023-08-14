@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-import ChatRoomItemSkeleton from './ChatRoomItemSkeleton';
+import RoomItemSkeleton from './RoomItemSkeleton';
 import { Screens } from '../../shared/consts/ScreensConstants';
+import { useNewMessages } from '../../shared/hooks/chat/useNewMessages';
 import useRoomDetails from '../../shared/hooks/rooms/useRoomDetails';
 import { navigate } from '../../shared/utils/navigationUtils';
 import {
@@ -16,10 +17,9 @@ interface ChatRoomItemProps {
   room: Room;
 }
 
-const IS_NEW_TIME_THRESHOLD_IN_SECONDS = 60;
-
-const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
-  const { data, loading, error } = useRoomDetails(room.id);
+const RoomItem = ({ room }: ChatRoomItemProps) => {
+  const { data: roomDetails, loading, error } = useRoomDetails(room.id);
+  const { hasNewMessages } = useNewMessages(room.id);
 
   const navigateToChatRoom = (roomDetails: RoomDetails) => {
     navigate(Screens.CHAT, { chatRoomDetails: roomDetails });
@@ -30,14 +30,13 @@ const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
     const lastMessageBody = lastMessage.body ?? 'Say "hi" to your new friend!';
     const lastMessageTime = lastMessage.insertedAt;
     const secondsSinceLastMessage = calculateHowMuchTimePassedSince(new Date(lastMessageTime));
-    const isNew = secondsSinceLastMessage < IS_NEW_TIME_THRESHOLD_IN_SECONDS;
 
-    return { lastMessage, isNew, lastMessageBody, secondsSinceLastMessage };
+    return { lastMessage, lastMessageBody, secondsSinceLastMessage };
   };
 
   if (loading) {
-    return <ChatRoomItemSkeleton />;
-  } else if (!data || error) {
+    return <RoomItemSkeleton />;
+  } else if (!roomDetails || error) {
     return (
       <View style={styles.container}>
         <Text numberOfLines={1} style={[styles.error]}>
@@ -47,20 +46,20 @@ const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
     );
   }
 
-  const { lastMessage, isNew, lastMessageBody, secondsSinceLastMessage } =
-    extractDataFromQueryResult(data);
+  const { lastMessage, lastMessageBody, secondsSinceLastMessage } =
+    extractDataFromQueryResult(roomDetails);
 
   return (
     <View
-      style={[styles.container, isNew && styles.highlighted]}
-      onTouchEnd={() => navigateToChatRoom(data)}>
+      style={[styles.container, hasNewMessages && styles.highlighted]}
+      onTouchEnd={() => navigateToChatRoom(roomDetails)}>
       <UserPicture size={64} />
 
       <View style={styles.content}>
         <View style={styles.lastMessageTime}>
-          {lastMessage && isNew && <View style={styles.isActiveDot} />}
+          {lastMessage && hasNewMessages && <View style={styles.isActiveDot} />}
 
-          {lastMessage && !isNew && (
+          {lastMessage && !hasNewMessages && (
             <Text numberOfLines={1} style={styles.text}>
               {parseTimeInSecondsToStringExpression(secondsSinceLastMessage)}
             </Text>
@@ -69,13 +68,13 @@ const ChatRoomItem = ({ room }: ChatRoomItemProps) => {
 
         <Text
           numberOfLines={1}
-          style={[styles.text, styles.title, isNew && styles.highlightedText]}>
+          style={[styles.text, styles.title, hasNewMessages && styles.highlightedText]}>
           {room.name}
         </Text>
 
         <Text
           numberOfLines={1}
-          style={[styles.text, styles.message, isNew && styles.highlightedText]}>
+          style={[styles.text, styles.message, hasNewMessages && styles.highlightedText]}>
           {lastMessageBody}
         </Text>
       </View>
@@ -132,4 +131,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatRoomItem;
+export default RoomItem;

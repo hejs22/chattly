@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-import ChatRoomItemSkeleton from '../components/rooms/ChatRoomItemSkeleton';
-import ChatRoomsList from '../components/rooms/ChatRoomsList';
+import RoomItemSkeleton from '../components/rooms/RoomItemSkeleton';
+import RoomsList from '../components/rooms/RoomsList';
 import useUserRooms from '../shared/hooks/rooms/useUserRooms';
 import commonStyles from '../styles';
 
@@ -10,11 +10,11 @@ const RoomsScreen = () => {
 
   return (
     <View style={styles.container}>
-      {loading && <ChatRoomItemSkeleton />}
+      {loading && <RoomItemSkeleton />}
 
       {(!data || error) && !loading && <Text style={styles.error}>No chat rooms found.</Text>}
 
-      {data && <ChatRoomsList rooms={data} />}
+      {data && <RoomsList rooms={data} />}
     </View>
   );
 };
