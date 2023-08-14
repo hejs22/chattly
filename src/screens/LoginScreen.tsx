@@ -10,9 +10,8 @@ const LoginScreen = () => {
 
   const onSubmit = useCallback(async (email: string, password: string) => {
     try {
-      await mutate('phil.dunphy@mail.com', '1wgUiDMaAF_J__D'); // TODO remember to delete it
+      await mutate(email, password);
     } catch (e) {
-      console.log(e);
       // already handled by custom hook
     }
   }, []);
