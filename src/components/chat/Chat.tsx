@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { GiftedChat, IMessage } from 'react-native-gifted-chat';
 
@@ -18,22 +19,34 @@ interface ChatProps {
 }
 
 const Chat = ({ messages, roomId, myId, typingUser, onTypingStart }: ChatProps) => {
+  const [displayedMessages, setDisplayedMessages] = useState(messages);
   const { mutate } = useSendMessage();
 
-  const onSend = async (messages: IMessage[] = []) => {
+  const createFailedMessageAlert = (): IMessage => {
+    const date = new Date();
+    return {
+      _id: date.getTime().toString().concat(date.toISOString()),
+      text: '*** Failed to send message. ***',
+      user: { _id: myId },
+      createdAt: date,
+    };
+  };
+
+  const handleSendMessage = async (messages: IMessage[] = []) => {
     const body = messages[0].text;
     try {
+      setDisplayedMessages((prev) => GiftedChat.append(prev, messages));
       await mutate(body, roomId);
     } catch (e) {
-      // TODO better error handling
+      setDisplayedMessages((prev) => GiftedChat.append(prev, [createFailedMessageAlert()]));
     }
   };
 
   return (
     <View style={styles.container}>
       <GiftedChat
-        messages={messages}
-        onSend={(messages) => onSend(messages)}
+        messages={displayedMessages}
+        onSend={(displayedMessages) => handleSendMessage(displayedMessages)}
         onInputTextChanged={onTypingStart}
         renderBubble={(props) => <MessageBubble {...props} />}
         renderInputToolbar={(props) => <ChatInputToolbar {...props} />}
