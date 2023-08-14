@@ -52,6 +52,7 @@ const Chat = ({ messages, roomId, myId, typingUser, onTypingStart }: ChatProps) 
         renderInputToolbar={(props) => <ChatInputToolbar {...props} />}
         renderSend={(props) => <SendMessageButton size={commonStyles.sizes.iconSize} {...props} />}
         renderFooter={() => <UserTypingIndicator />}
+        renderDay={() => <View />}
         renderAvatar={null}
         scrollToBottom
         placeholder=""
