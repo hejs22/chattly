@@ -27,7 +27,7 @@ export const GiftedMessageMapper = new MessagesMapper();
 
 export const extractOtherUserDataFromMessages = (messages: Message[], you: User): User | null => {
   const filteredMessages = messages.filter((message) => message.user.id !== you.id);
-  return filteredMessages[0].user ?? null;
+  return filteredMessages[0]?.user ?? null;
 };
 
 export const parseMaybeUserToString = (user: User | null) => {

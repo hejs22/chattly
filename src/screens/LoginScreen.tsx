@@ -10,7 +10,7 @@ const LoginScreen = () => {
 
   const onSubmit = useCallback(async (email: string, password: string) => {
     try {
-      await mutate(email, password);
+      await mutate(email?.trim() ?? email, password);
     } catch (e) {
       // already handled by custom hook
     }
